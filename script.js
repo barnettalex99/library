@@ -28,15 +28,20 @@ function deleteBook(el, i) {
   myLibrary.splice(i, 1);
 }
 
-function changeRead(but, boo) {
+// function setReadValue(newRead, inputBook) {
+//   inputBook.read = newRead;
+// }
+
+function changeRead(readDiv, readBut, boo) {
   if (boo.read === 'read') {
-    but.textContent = 'unread';
-    but.style.color = 'red';
+    readBut.textContent = 'Change to read';
     boo.read = 'unread';
+    readDiv.textContent = 'unread';
   }
   else if (boo.read === 'unread') {
-    but.textContent = 'read';
+    readBut.textContent = 'Change to unread';
     boo.read = 'read';
+    readDiv.textContent = 'read';
   }
 }
 
@@ -59,9 +64,9 @@ function displayBooks() {
     read.textContent = myLibrary[i].read;
     deleteButton.textContent = 'Delete Book';
     deleteButton.addEventListener('click', () => { deleteBook(newDiv, i); });
-    readButton.textContent = myLibrary[i].read;
+    readButton.textContent = 'Change Read Status';
     // eslint-disable-next-line no-loop-func, no-undef
-    readButton.addEventListener('click', () => { changeRead(readButton, myLibrary[i]); });
+    readButton.addEventListener('click', () => { changeRead(read, readButton, myLibrary[i]); });
 
     parent.appendChild(newDiv);
     newDiv.appendChild(newTitle);
