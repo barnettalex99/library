@@ -25,48 +25,58 @@ function displayNewBook(newBook) {
 
 function deleteBook(el, i) {
   el.remove();
-  myLibrary.splice(i, 1);
+  if (myLibrary.length > 1) {
+    myLibrary.splice(i, 1);
+  } else {
+    myLibrary.pop();
+  }
 }
 
-// function setReadValue(newRead, inputBook) {
-//   inputBook.read = newRead;
-// }
-
-function changeRead(readDiv, readBut, boo) {
-  if (boo.read === 'read') {
-    readBut.textContent = 'Change to read';
-    boo.read = 'unread';
-    readDiv.textContent = 'unread';
+function changeRead(inputId) {
+  let activeDiv = document.getElementById(inputId);
+  let activeRead = activeDiv.getElementsByClassName('read');
+  let html = activeRead[0].innerHTML;
+  console.log(activeDiv);
+  console.log(activeRead);
+  console.log(html);
+  if (html === 'read') {
+    console.log('enters the for loop');
+    activeRead[0].innerHTML = 'unread';
   }
-  else if (boo.read === 'unread') {
-    readBut.textContent = 'Change to unread';
-    boo.read = 'read';
-    readDiv.textContent = 'read';
+  else {
+    console.log('enters else');
+    activeRead[0].innerHTML = 'read';
   }
 }
 
 function displayBooks() {
   const parent = document.getElementById('books-container');
   parent.textContent = '';
-  for (let i = 0; i < myLibrary.length; i++) {
+  for (let i = 0; i < myLibrary.length; i += 1) {
     console.log(myLibrary[i]);
     let newDiv = document.createElement('div');
-    newDiv.setAttribute('id', 'book-div');
+    newDiv.setAttribute('id', i);
     let newTitle = document.createElement('p');
+    newTitle.setAttribute('class', 'title');
     let newAuthor = document.createElement('p');
+    newTitle.setAttribute('class', 'author');
     let newPages = document.createElement('p');
+    newPages.setAttribute('class', 'pages');
     let read = document.createElement('p');
+    read.setAttribute('class', 'read');
     let deleteButton = document.createElement('button');
+    deleteButton.setAttribute('id', 'delete-button');
     let readButton = document.createElement('button');
+    readButton.setAttribute('id', 'read-button');
+
     newTitle.textContent = myLibrary[i].title;
     newAuthor.textContent = myLibrary[i].author;
     newPages.textContent = myLibrary[i].pages;
-    read.textContent = myLibrary[i].read;
+    read.innerHTML = myLibrary[i].read;
     deleteButton.textContent = 'Delete Book';
     deleteButton.addEventListener('click', () => { deleteBook(newDiv, i); });
     readButton.textContent = 'Change Read Status';
-    // eslint-disable-next-line no-loop-func, no-undef
-    readButton.addEventListener('click', () => { changeRead(read, readButton, myLibrary[i]); });
+    readButton.addEventListener('click', () => { changeRead(i); });
 
     parent.appendChild(newDiv);
     newDiv.appendChild(newTitle);
