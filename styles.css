@@ -1,0 +1,11 @@
+#book-div{
+    border: 5px solid black;
+}
+
+.content{
+    display:flex;
+    flex: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
