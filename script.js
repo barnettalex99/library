@@ -56,6 +56,7 @@ function displayBooks() {
     console.log(myLibrary[i]);
     let newDiv = document.createElement('div');
     newDiv.setAttribute('id', i);
+    newDiv.setAttribute ('class','bookDiv');
     let newTitle = document.createElement('p');
     newTitle.setAttribute('class', 'title');
     let newAuthor = document.createElement('p');

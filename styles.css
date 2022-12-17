@@ -1,11 +1,88 @@
-#book-div{
-    border: 5px solid black;
+body{
+    background-image: url("wooden-background.jpg");
+    color: #F7EED9;
 }
 
 .content{
+    height:100%;
+    width: 100%;
     display:flex;
     flex: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+form{
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container, .author-container, .pages-container, .read-container{
+    margin: 10px;
+}
+
+#submit-button{
+    padding: 10px;
+    font-size: 16px;
+    background-color: #F7EED9;
+    color: #042103;
+    border: none;
+    border-radius: 2px;
+}
+
+#submit-button:hover{
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.top-header{
+    width: 100%;
+    background-color: #042103;
+    display: flex;
+    flex:auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.books-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 30px;
+    justify-items: space-between;
+
+}
+
+.bookDiv{
+    padding: 5px;
+    background-color: #F7EED9;
+    color: #042103;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+}
+
+#read-button, #delete-button{
+    font-size: 12px;
+    margin: 5px;
+    padding:5px;
+    background-color: #042103;
+    color:#F7EED9;
+    border: none;
+    border-radius: 2px;
+}
+
+#read-button:hover, #delete-button:hover{
+    font-size: 14px;
+    padding: 7px;
+    font-weight: bold;
 }
