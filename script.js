@@ -1,4 +1,8 @@
 const myLibrary = [];
+const form = document.getElementById('form');
+const formTitle = document.getElementById('title-id');
+const formAuthor = document.getElementById('author-id');
+const formPages = document.getElementById('pages-id');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -56,7 +60,7 @@ function displayBooks() {
     console.log(myLibrary[i]);
     let newDiv = document.createElement('div');
     newDiv.setAttribute('id', i);
-    newDiv.setAttribute ('class','bookDiv');
+    newDiv.setAttribute ('class', 'bookDiv');
     let newTitle = document.createElement('p');
     newTitle.setAttribute('class', 'title');
     let newAuthor = document.createElement('p');
@@ -90,6 +94,8 @@ function displayBooks() {
 }
 
 function submitForm() {
+  event.preventDefault();
+  console.log('enters loop');
   let titleValue = document.getElementById('title-id').value;
   let authorValue = document.getElementById('author-id').value;
   let pagesValue = document.getElementById('pages-id').value;
@@ -100,7 +106,19 @@ function submitForm() {
     readValue = 'unread';
   }
 
-  let book = new Book (titleValue, authorValue, pagesValue, readValue);
-  addBookToLibrary(book);
-  displayBooks();
+  if (titleValue !== '' && authorValue !== '' && pagesValue > 0) {
+    let book = new Book (titleValue, authorValue, pagesValue, readValue);
+    addBookToLibrary(book);
+    displayBooks();
+    console.log(myLibrary);
+  } else if (titleValue === '') {
+    formTitle.placeholder = 'this is a required field';
+  } else if (authorValue === '') {
+    formAuthor.placeholder = 'this is a required field';
+  } else if (pagesValue === '') {
+    formPages.placeholder = 'this is a required field';
+  } else if (pagesValue < 0) {
+    formPages.placeholder = 'pages value must be greater than 0';
+  }
 }
+

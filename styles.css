@@ -86,3 +86,15 @@ form{
     padding: 7px;
     font-weight: bold;
 }
+
+input:valid {
+    box-shadow: inset 0px 0px 2px 1px green;
+}
+
+input:invalid{
+    box-shadow: inset 0px 0px 2px 1px red;
+}
+
+input:focus{
+    box-shadow: none;
+}

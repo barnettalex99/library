@@ -17,20 +17,23 @@
             <form id="form">
                 <h3>Enter book info here:</h3>
                 <div class="title-container">
-                    <input type="text" id="title-id" name="title" placeholder="Book Title">
+                    <span> Title: </span>
+                    <input type="text" required id="title-id" name="title" placeholder="Enter Book Title Here">
                 </div>
                 <div class="author-container">
-                    <input type="text" id="author-id" name="author" placeholder="Book Author">
+                    <span> Author: </span>
+                    <input type="text" required id="author-id" name="author" placeholder="Enter Book Author Here" >
                 </div>
                 <div class="pages-container">
-                    <input type="number" id="pages-id" name="title" placeholder="Number of Pages">
+                    <span> Pages: </span>
+                    <input type="number" required id="pages-id" name="title" placeholder="Enter Pages Here" min="1">
                 </div>
                 <div class="read-container">
+                    <span> Have you read this book yet? </span>
                     <input type="checkbox" id="read-id" name="read" value="true">
-                    <label for="read-id"> I have already read this book!</label><br>
                 </div>
+                <button type="button" onclick = "submitForm()" id="submit-button">Add Book</button>
         </form>
-        <button type="submit" onclick = "submitForm()" id="submit-button">Add Book</button>
         <h2>Here's your personal online library:</h2>
         <div class="books-container" id="books-container">
             
