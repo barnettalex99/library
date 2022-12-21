@@ -94,7 +94,7 @@ function displayBooks() {
 }
 
 function submitForm() {
-  event.preventDefault();
+  //event.preventDefault();
   console.log('enters loop');
   let titleValue = document.getElementById('title-id').value;
   let authorValue = document.getElementById('author-id').value;
@@ -121,4 +121,3 @@ function submitForm() {
     formPages.placeholder = 'pages value must be greater than 0';
   }
 }
-
